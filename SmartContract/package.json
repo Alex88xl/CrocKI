@@ -1,7 +1,7 @@
 {
-  "name": "ArtWarehouse",
+  "name": "artwarehouse",
   "version": "1.0.0",
-  "description": "",
+  "description": "SmartContract",
   "main": "truffle.js",
   "directories": {
     "test": "test"
@@ -12,8 +12,8 @@
     "tc": "node_modules/.bin/truffle console",
     "tt": "node_modules/.bin/truffle test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Stefan Krause, Maximilian Reichl, Alexander Wrede",
+  "license": "THE BEER-WARE LICENSE",
   "devDependencies": {},
   "dependencies": {
     "npm": "^6.9.0",
