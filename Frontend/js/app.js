@@ -22,13 +22,11 @@ App = {
   },
 
   initContract: function() {
-    $.getJSON("build/contracts/ArtWarehouse.json", function(aw) {
+    $.getJSON("ArtWarehouse.json", function(aw) {
       // Instantiate a new truffle contract from the artifact
       App.contracts.AW = TruffleContract(aw);
       // Connect provider to interact with contract
       App.contracts.AW.setProvider(App.web3Provider);
-
-      console.log(App.contracts);
 
       App.listenForEvents();
 
@@ -41,8 +39,8 @@ App = {
     var loader = $("#loader");
     var content = $("#content");
 
-    loader.show();
-    content.hide();
+    //loader.show();
+    //content.hide();
 
     // Load account data
     web3.eth.getCoinbase(function(err, account) {
@@ -95,6 +93,23 @@ App = {
     });
   },**/
 
+  // ArtWarehouse.deployed().then(function(instance) { return awInstance = instance.addPicture("there") });
+  // Here is a failure
+  upload: function() {
+    var link = "";
+    link = $('#link').val();
+    App.contracts.AW.deployed().then(function(instance) {
+      console.log("upload: " + link + ". Account: " + App.account);
+      return instance.addPicture(link, { from: App.account });
+    }).then(function(result) {
+      // Wait for update
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  },
+
   listenForEvents: function() {
     
     //Event aus Election.sol wird hier überwacht. Wird es emmitted, so werden zwei candidaten hinzugefügt
@@ -105,6 +120,7 @@ App = {
       }).watch(function(error, event) {
         //Hier würde ein externe API-Zugriff statt finden
         console.log("event triggered", event);
+        instance.setWorth(1, 10, { from: App.account });
         // instance.addCandidate("CandY", { from: App.account });
         // Reload when a new vote is recorded
         

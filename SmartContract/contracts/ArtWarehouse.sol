@@ -23,7 +23,7 @@ contract ArtWarehouse {
         pictureList[picturesCount] = Picture(picturesCount, link, 0, msg.sender);
 
         // Event emmitten
-        emit pictureUpload(picturesCount, link);
+        emit pictureUpload(msg.sender, picturesCount, link);
     }
 
     function setWorth (uint pictureID, uint worth) public {
@@ -39,5 +39,5 @@ contract ArtWarehouse {
     }
 
     // Dieses Event wird emitted und vom Backend beobachet
-    event pictureUpload (uint indexed _pictureId, string link);
+    event pictureUpload (address indexed sid, uint  _pictureId, string link);
 }
