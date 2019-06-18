@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Election Results</title>
+    <title>Art Warehouse</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="text-center">Election Results</h1>
+          <h1 class="text-center">Artlist</h1>
           <hr/>
           <br/>
           <div id="loader">
@@ -24,23 +24,15 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Votes</th>
+                  <th scope="col">Link</th>
+                  <th scope="col">Worth</th>
+                  <th scope="col">Owner</th>
                 </tr>
               </thead>
-              <tbody id="candidatesResults">
+              <tbody id="picturesResults">
               </tbody>
             </table>
             <hr/>
-            <form onSubmit="App.castVote(); return false;">
-              <div class="form-group">
-                <label for="candidatesSelect">Select Candidate</label>
-                <select class="form-control" id="candidatesSelect">
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Vote</button>
-              <hr />
-            </form>
             <p id="accountAddress" class="text-center"></p>
           </div>
         </div>
@@ -50,9 +42,9 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script src="resources/web3.min.js"></script>
+    <script src="resources/truffle-contract.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
