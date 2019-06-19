@@ -79,28 +79,15 @@ App = {
     });
   },
 
-  /**
-  castVote: function() {
-    var candidateId = $('#candidatesSelect').val();
-    App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
-    }).then(function(result) {
-      // Wait for votes to update
-      $("#content").hide();
-      $("#loader").show();
-    }).catch(function(err) {
-      console.error(err);
-    });
-  },**/
-
   // ArtWarehouse.deployed().then(function(instance) { return awInstance = instance.addPicture("there") });
   // Here is a failure
   upload: function() {
     var link = "";
     link = $('#link').val();
     App.contracts.AW.deployed().then(function(instance) {
+      awInstance = instance;
       console.log("upload: " + link + ". Account: " + App.account);
-      return instance.addPicture(link, { from: App.account });
+      return awInstance.addPicture(link, { from: App.account });
     }).then(function(result) {
       // Wait for update
       $("#content").hide();
