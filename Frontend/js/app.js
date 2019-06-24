@@ -28,7 +28,7 @@ App = {
       // Connect provider to interact with contract
       App.contracts.AW.setProvider(App.web3Provider);
 
-      App.listenForEvents();
+      // App.listenForEvents();
 
       return App.render();
     });
@@ -83,10 +83,11 @@ App = {
   // Here is a failure
   upload: function() {
     var link = "";
+    var awInstance;
     link = $('#link').val();
     App.contracts.AW.deployed().then(function(instance) {
       awInstance = instance;
-      console.log("upload: " + link + ". Account: " + App.account);
+      //console.log("upload: " + link + ". Account: " + App.account);
       return awInstance.addPicture(link, { from: App.account });
     }).then(function(result) {
       // Wait for update
@@ -97,7 +98,7 @@ App = {
     });
   },
 
-  listenForEvents: function() {
+  /** listenForEvents: function() {
     
     //Event aus Election.sol wird hier überwacht. Wird es emmitted, so werden zwei candidaten hinzugefügt
     App.contracts.AW.deployed().then(function(instance) {
@@ -107,7 +108,8 @@ App = {
       }).watch(function(error, event) {
         //Hier würde ein externe API-Zugriff statt finden
         console.log("event triggered", event);
-        instance.setWorth(1, 10, { from: App.account });
+        console.log(event.args._pictureId.c[0]);
+        instance.setWorth(event.args._pictureId.c[0], 10, { from: App.account });
         // instance.addCandidate("CandY", { from: App.account });
         // Reload when a new vote is recorded
         
@@ -125,11 +127,11 @@ App = {
               alert("failure");
           }
         };
-      $.ajax( options ); */
+      $.ajax( options ); * /
 
       });
     });
-  }
+  } **/
 };
 
 $(function() {

@@ -4,8 +4,12 @@
   "description": "OraclePattern",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/.bin/lite-server"
   },
   "author": "Stefan Krause, Maximilian Reichl, Alexander Wrede",
-  "license": "THE BEER-WARE LICENSE"
+  "license": "THE BEER-WARE LICENSE",
+  "dependencies": {
+    "lite-server": "^2.5.3"
+  }
 }

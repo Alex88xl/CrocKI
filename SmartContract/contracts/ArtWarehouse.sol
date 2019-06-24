@@ -39,5 +39,5 @@ contract ArtWarehouse {
     }
 
     // Dieses Event wird emitted und vom Backend beobachet
-    event pictureUpload (address indexed sid, uint  _pictureId, string link);
+    event pictureUpload (address indexed sid, uint _pictureId, string link);
 }

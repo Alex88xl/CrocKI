@@ -1,3 +1,6 @@
+import { web3 } from "../resources/web3.min.js";
+import { TruffleContract } from "../resources/truffle-contract.js"
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -22,104 +25,34 @@ App = {
   },
 
   initContract: function() {
-    $.getJSON("Election.json", function(election) {
+    $.getJSON("ArtWarehouse.json", function(aw) {
       // Instantiate a new truffle contract from the artifact
-      App.contracts.Election = TruffleContract(election);
+      App.contracts.AW = TruffleContract(aw);
       // Connect provider to interact with contract
       App.contracts.Election.setProvider(App.web3Provider);
 
       console.log(App.contracts);
 
       App.listenForEvents();
-
-      return App.render();
-    });
-  },
-
-  render: function() {
-    var electionInstance;
-    var loader = $("#loader");
-    var content = $("#content");
-
-    loader.show();
-    content.hide();
-
-    // Load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if (err === null) {
-        App.account = account;
-        $("#accountAddress").html("Your Account: " + App.account);
-      }
-    });
-
-    // Load contract data
-    App.contracts.Election.deployed().then(function(instance) {
-      electionInstance = instance;
-      console.log(instance);
-      return electionInstance.candidatesCount();
-    }).then(function(candidatesCount) {
-      var candidatesResults = $("#candidatesResults");
-      candidatesResults.empty();
-
-      var candidatesSelect = $('#candidatesSelect');
-      candidatesSelect.empty();
-
-      for (var i = 1; i <= candidatesCount; i++) {
-        electionInstance.candidates(i).then(function(candidate) {
-          var id = candidate[0];
-          var name = candidate[1];
-          var voteCount = candidate[2];
-
-          // Render candidate Result
-          var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
-          candidatesResults.append(candidateTemplate);
-
-          // Render candidate ballot option
-          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
-          candidatesSelect.append(candidateOption);
-        });
-      }
-      return electionInstance.voters(App.account);
-      }).then(function(hasVoted) {
-        // Do not allow a user to vote
-        if(hasVoted) {
-          $('form').hide();
-        }
-
-      loader.hide();
-      content.show();
-    }).catch(function(error) {
-      console.warn(error);
-    });
-  },
-
-  castVote: function() {
-    var candidateId = $('#candidatesSelect').val();
-    App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
-    }).then(function(result) {
-      // Wait for votes to update
-      $("#content").hide();
-      $("#loader").show();
-    }).catch(function(err) {
-      console.error(err);
     });
   },
 
   listenForEvents: function() {
     
     //Event aus Election.sol wird hier überwacht. Wird es emmitted, so werden zwei candidaten hinzugefügt
-    App.contracts.Election.deployed().then(function(instance) {
-      instance.reqCandidate({}, {
+    App.contracts.AW.deployed().then(function(instance) {
+      instance.pictureUpload({}, {
         fromBlock: 0,
         toBlock: 'latest'
       }).watch(function(error, event) {
         //Hier würde ein externe API-Zugriff statt finden
         console.log("event triggered", event);
-        instance.addCandidate("CandX", { from: App.account });
-        instance.addCandidate("CandY", { from: App.account });
+        console.log(event.args._pictureId.c[0]);
+        instance.setWorth(event.args._pictureId.c[0], 10, { from: App.account });
+        // instance.addCandidate("CandY", { from: App.account });
         // Reload when a new vote is recorded
         
+        /**
         var options = {
           url: "http://localhost:3000/bcc.php",
           dataType: "text",
@@ -133,7 +66,7 @@ App = {
               alert("failure");
           }
         };
-      $.ajax( options );
+      $.ajax( options ); */
 
       });
     });
