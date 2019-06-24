@@ -1,0 +1,27 @@
+{
+  "name": "crocki",
+  "version": "1.0.0",
+  "description": "Multiple startscripts for composing the whole application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devall": "(cd SmartContract && npm run tm) && npm run copyF",
+    "copyF": "(cp SmartContract/build/contracts/ArtWarehouse.json OraclePattern/) && (cp SmartContract/build/contracts/ArtWarehouse.json Frontend/) && npm run devnode",
+    "devnode": "npm run frontdev",
+    "frontdev": "cd Frontend && npm run dev",
+    "oracledev": "cd OraclePattern && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex88xl/CrocKI.git"
+  },
+  "author": "Stefan Krause, Maximilian Reichl und Alexander Wrede",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex88xl/CrocKI/issues"
+  },
+  "homepage": "https://github.com/Alex88xl/CrocKI#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

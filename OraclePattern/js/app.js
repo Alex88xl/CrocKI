@@ -1,6 +1,3 @@
-import { web3 } from "../resources/web3.min.js";
-import { TruffleContract } from "../resources/truffle-contract.js"
-
 App = {
   web3Provider: null,
   contracts: {},
@@ -29,9 +26,16 @@ App = {
       // Instantiate a new truffle contract from the artifact
       App.contracts.AW = TruffleContract(aw);
       // Connect provider to interact with contract
-      App.contracts.Election.setProvider(App.web3Provider);
+      App.contracts.AW.setProvider(App.web3Provider);
 
       console.log(App.contracts);
+
+      web3.eth.getCoinbase(function(err, account) {
+        if (err === null) {
+          App.account = account;
+          console.log(App.account);
+        }
+      });
 
       App.listenForEvents();
     });
@@ -47,8 +51,8 @@ App = {
       }).watch(function(error, event) {
         //Hier würde ein externe API-Zugriff statt finden
         console.log("event triggered", event);
-        console.log(event.args._pictureId.c[0]);
-        instance.setWorth(event.args._pictureId.c[0], 10, { from: App.account });
+        console.log(event.args.pictureId);
+        instance.setWorth(event.args.pictureId.c, 10, { from: App.account });
         // instance.addCandidate("CandY", { from: App.account });
         // Reload when a new vote is recorded
         
