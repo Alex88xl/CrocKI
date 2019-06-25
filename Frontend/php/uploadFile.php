@@ -1,10 +1,14 @@
 <?php
-/*$img = $_GET['imgBase64'];
-$img = str_replace('data:image/png;base64,', '', $img);
+$img = $_POST['imgBase64'];
+$fk = strpos($img, ",");
+$img = substr($img, $fk+1);
+//$img = str_replace($rep, '', $img);
 $img = str_replace(' ', '+', $img);
 $fileData = base64_decode($img);
 //saving
-$fileName = 'photo.png';
-file_put_contents($fileName, $fileData);*/
-echo json_encode("works");
+$pname = md5($fileData);
+$fileName = $pname . '.jpg';
+chdir("../../pictures");
+file_put_contents($fileName, $fileData);
+echo json_encode($fileName);
 ?>

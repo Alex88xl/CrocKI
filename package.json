@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "devall": "(cd SmartContract && npm run tm) && npm run copyF",
-    "copyF": "(cp SmartContract/build/contracts/ArtWarehouse.json OraclePattern/) && (cp SmartContract/build/contracts/ArtWarehouse.json Frontend/) && npm run devnode",
-    "devnode": "npm run frontdev",
-    "frontdev": "cd Frontend && npm run dev",
-    "oracledev": "cd OraclePattern && npm run dev"
+    "copyF": "(cp SmartContract/build/contracts/ArtWarehouse.json Frontend/)"
   },
   "repository": {
     "type": "git",

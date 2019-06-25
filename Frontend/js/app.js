@@ -81,13 +81,13 @@ App = {
 
   // ArtWarehouse.deployed().then(function(instance) { return awInstance = instance.addPicture("there") });
   // Here is a failure
-  upload: function() {
-    var link = "";
+  writeblockchain: function(data) {
     var awInstance;
-    link = $('#link').val();
+    var link = data;
+    link = link.substring(1, link.length-1);
+    
     App.contracts.AW.deployed().then(function(instance) {
       awInstance = instance;
-      //console.log("upload: " + link + ". Account: " + App.account);
       return awInstance.addPicture(link, { from: App.account, gas:3000000});
     }).then(function(result) {
       // Wait for update
@@ -96,6 +96,26 @@ App = {
     }).catch(function(err) {
       console.error(err);
     });
+  },
+
+  uploadfile: function(){
+
+    var preview = document.getElementById("imgp").src;
+    console.log(preview);
+
+    var options = {
+        url: "php/uploadFile.php",
+        dataType: "text",
+        type: "POST",
+        data: { imgBase64: preview }, // Our valid JSON string
+        success: function( data, status, xhr ) {
+            App.writeblockchain(data);
+        },
+        error: function( xhr, status, error ) {
+            alert("failure");
+        }
+      };
+    $.ajax( options );
   },
 
   listenForEvents: function() {
@@ -107,6 +127,10 @@ App = {
         toBlock: 'latest'
       }).watch(function(error, event) {
         //Hier würde ein externe API-Zugriff statt finden
+
+        console.log("event triggered", event);
+        console.log(event.args.pictureId);
+        instance.setWorth(event.args.pictureId.c, 10, { from: App.account });
 
         $("#content").show();
         $("#loader").hide();
