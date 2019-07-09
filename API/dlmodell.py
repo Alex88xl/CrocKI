@@ -58,6 +58,7 @@ history = model.fit(x_train, y_train, epochs=50)
 
 model.save('my_model.h5')
 
+
 #%%
 import matplotlib.pyplot as plt
 import numpy as np
