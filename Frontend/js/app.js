@@ -123,35 +123,31 @@ App = {
     //Event aus Election.sol wird hier überwacht. Wird es emmitted, so werden zwei candidaten hinzugefügt
     App.contracts.AW.deployed().then(function(instance) {
       instance.pictureUpload({}, {
-        fromBlock: 0,
-        toBlock: 'latest'
+        fromBlock: 'latest'
       }).watch(function(error, event) {
         //Hier würde ein externe API-Zugriff statt finden
-
         console.log("event triggered", event);
-        console.log(event.args.pictureId);
-        instance.setWorth(event.args.pictureId.c, 10, { from: App.account });
+        console.log(event.args.pictureId.c);
 
         $("#content").show();
         $("#loader").hide();
         $("#link").val("");
         // Reload when a new vote is recorded
         
-        /**
         var options = {
-          url: "http://localhost:3000/bcc.php",
+          url: "http://localhost:5000/",
           dataType: "text",
           type: "GET",
-          data: { rechnung: "alle" }, // Our valid JSON string
+          data: { link: event.args.link }, // Our valid JSON string
           success: function( data, status, xhr ) {
-            instance.addCandidate(data, { from: App.account });
-            App.render();
+            instance.setWorth(event.args.pictureId.c, data, { from: App.account });
+            // App.render();
           },
           error: function( xhr, status, error ) {
               alert("failure");
           }
         };
-      $.ajax( options ); */
+        $.ajax( options );
 
       });
     });
