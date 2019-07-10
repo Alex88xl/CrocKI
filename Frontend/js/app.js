@@ -94,6 +94,7 @@ App = {
       $("#content").hide();
       $("#loader").show();
     }).catch(function(err) {
+      alert("" + err);
       console.error(err);
     });
   },
@@ -112,7 +113,7 @@ App = {
             App.writeblockchain(data);
         },
         error: function( xhr, status, error ) {
-            alert("failure");
+            alert(error);
         }
       };
     $.ajax( options );
@@ -144,7 +145,7 @@ App = {
             // App.render();
           },
           error: function( xhr, status, error ) {
-              alert("failure");
+              alert(error);
           }
         };
         $.ajax( options );
