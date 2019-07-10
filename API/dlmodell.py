@@ -10,13 +10,13 @@ test_data = '/Users/alexwrede/Desktop/DHBW/DHBW 2019/Intergrationsseminar/CrocKI
 
 def read_train_data():
     train_images = []
-    x = 0;
+    x = 0
     for i in tqdm(os.listdir(train_data)):
         path = "/Users/alexwrede/Desktop/DHBW/DHBW 2019/Intergrationsseminar/CrocKI/API/Bilder/circle" + str(x) + ".jpg"
         img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
         img = cv2.resize(img, (64, 64))
         train_images.append(np.array(img))
-        x = x + 1;
+        x = x + 1
     return train_images
 
 def readcsv(filename):

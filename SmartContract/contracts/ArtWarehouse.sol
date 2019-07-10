@@ -20,7 +20,6 @@ contract ArtWarehouse {
 
     function addPicture (string memory link) public {
         bool used = false;
-        
         for (int i = 0; i <= picturesCount; i++) {
             if(compareLinks(link, pictureList[i].link) == true){
                 used = true;
@@ -44,7 +43,7 @@ contract ArtWarehouse {
         pictureList[pictureID].worth = worth;
     }
 
-    function compareLinks (string memory a, string memory b) private returns (bool) {
+    function compareLinks (string memory a, string memory b) private pure returns (bool) {
         if(keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b))){
             return true;
         }else{
