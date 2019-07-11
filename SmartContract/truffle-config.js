@@ -1,3 +1,5 @@
+// set the config for truffle to connect to the ganache Blockchain.
+// if real blockchain will be used the host and port have to be edited
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // for more about customizing your Truffle configuration!

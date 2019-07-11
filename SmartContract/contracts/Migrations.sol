@@ -1,3 +1,4 @@
+// contract is just needed to determine the last successful migration
 pragma solidity ^0.5.0;
 
 contract Migrations {

@@ -1,3 +1,4 @@
+// Tests to approve the full functionality of the smartContract
 var AW = artifacts.require("./ArtWarehouse.sol");
 
 contract("AW", function(accounts) {
