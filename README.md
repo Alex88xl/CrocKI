@@ -24,23 +24,24 @@ Start Ganache with Localhost and Port 8545
         2. "npm install node.js"
         3. "npm run dev"
 
-5.  Furthermore the SmartContract needs to be migrated. Go to the        SmartContract directory.
+6.  Furthermore the SmartContract needs to be migrated. Go to the        SmartContract directory.
     1. run "npm install" 
     2. run "npm run tm" to migrate the SmartContracts to the blockhain.
 
-6.  Run "npm run tt" to test the migrations.
+7.  Run "npm run tt" to test the migrations.
 
-7.  Go to the API-folder and run (Mac) "export FLASK_APP=server.py", 
+8.  Go to the API-folder and run (Mac) "export FLASK_APP=server.py", 
     (Windows Powershell) "$env:FLASK_APP= "server.py"" to set the PATH to the FLASK server
 
-8.  Install openCV2. Run "pip install opencv-python==" choose a          valid version (highest) and run the command again with the           versionnumber after "=="
+9.  Install openCV2. Run "pip install opencv-python==" choose a          valid version (highest) and run the command again with the           versionnumber after "=="
 
-9.  Install tensorflow. Run (Mac) "pip install tensorflow". 
+10.  Install tensorflow. Run (Mac) "pip install tensorflow". 
     (Windows) "pip3 install --user --upgrade tensorflow".
 
-10. Install numpy
+11. Install numpy. Run (Mac) "pip install numpy". 
+    (Windows) "pip3 install --user --upgrade numpy".
 
-11.  Go to the API-folder and run "flask run". The server.py will         start on localhost and port 5000.
+12.  Go to the API-folder and run "flask run". The server.py will         start on localhost and port 5000.
 
 => Use your browser to access the frontend
 
