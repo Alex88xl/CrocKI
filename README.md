@@ -2,7 +2,7 @@
 Application to sell Artworks over Blockchain. The Worth off the Art will be set by an Deep Learning Model. 
 The Communication from Smart Contract to DL uses the Oracle Pattern. 
 
-# Usage
+# Usage Application
 Start Ganache with Localhost and Port 8545
 
 1. Open Terminal and go to the basedirectory. Run "npm install" to      install all needed dependencies. 
@@ -22,3 +22,13 @@ Start Ganache with Localhost and Port 8545
 
 => Use your browser to access the frontend
 => Use localhost:3000 to access the frontend
+
+# Usage pgenerator.py
+Install Anaconda and afterwads install jupyter to use the "run cell" option in pgenerator.py. When the generation of new images was successfull a new Folder "Bilder" will appear, aswell as the pictures.csv. Those are needed for usage of the DL-Model
+
+# Usage DL-Model
+In addition to the steps done in "Usage pgenerator.py", do also install the newest version of opencv.
+
+Change the Paths to the Train- and Testdata to your "Bilder"-folder and to your pictures.csv.
+
+Then just start running the cells in order.
