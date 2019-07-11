@@ -13,8 +13,12 @@ Start Ganache with Localhost and Port 8545
         -> If an error occurs with npm saying "missing script copyF", then just copy the ArtWarehouse.json from 
         "SmartContract/build/contracts/ArtWarehouse.json" to "Frontend"
 
-4.  Afterwards there are two options:
-    1. Upload the Frontend-folder and pictures-folder to a webserver and use a browser
+4.  Furthermore the SmartContract needs to be migrated. Go to the        SmartContract directory.
+    1. run "npm install" 
+    2. run "npm run tm" to migrate the SmartContracts to the blockhain.
+
+5.  Afterwards there are two options:
+    1. Upload the Frontend-folder and pictures-folder to a webserver and use a browser (upload ArtWarehouse.json every time you migrated)
     2. Start a node.js server.
         1. run "npm init" in the Frontend-folder
         2. "npm install node.js"
