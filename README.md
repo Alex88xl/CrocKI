@@ -32,3 +32,5 @@ In addition to the steps done in "Usage pgenerator.py", do also install the newe
 Change the Paths to the Train- and Testdata to your "Bilder"-folder and to your pictures.csv.
 
 Then just start running the cells in order.
+
+After all cells finished, replace the new generated "my_model.h5" with the old one in the API-folder
