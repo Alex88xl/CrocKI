@@ -21,6 +21,7 @@ Start Ganache with Localhost and Port 8545
 6.  Go to the API-folder and run "flask run". The server.py will be      started on localhost and port 5000.
 
 => Use your browser to access the frontend
+
 => Use localhost:3000 to access the frontend
 
 # Usage pgenerator.py
