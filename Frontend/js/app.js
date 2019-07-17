@@ -176,6 +176,9 @@ App = {
             // if worth was successfully determined the setworth function of smartcontract will be called
             // arguments: pictureId, the worth and the address of sender
             instance.setWorth(event.args.pictureId.c, data, { from: App.account });
+            App.render();
+            document.getElementById("imgp").src = "";
+            document.getElementById("fileu").value = "";
           },
           error: function( xhr, status, error ) {
               alert(error);
