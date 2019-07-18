@@ -163,7 +163,6 @@ App = {
 
         $("#content").show();
         $("#loader").hide();
-        $("#link").val("");
         // Reload when a new worth was set
         
         // ajax-request to server.py for prediction of imageworth

@@ -19,7 +19,7 @@ Start Ganache with Localhost and Port 8545
 
 5.  Afterwards there are two options:
     1. Upload the Frontend-folder and pictures-folder to a webserver and use a browser (upload ArtWarehouse.json every time you migrated)
-    2. Start a node.js server.
+    2. Start a node.js server and xampp
         1. run "npm init" in the Frontend-folder
         2. "npm install node.js"
         3. "npm run dev"
