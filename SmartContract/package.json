@@ -16,7 +16,7 @@
   "license": "THE BEER-WARE LICENSE",
   "devDependencies": {},
   "dependencies": {
-    "npm": "^6.9.0",
+    "npm": "^6.14.6",
     "truffle": "^5.0.17"
   }
 }
